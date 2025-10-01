@@ -1,3 +1,8 @@
+import sys
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
 def get_book_text(path_to_text):
     with open(path_to_text) as f:
         return f.read()
@@ -7,7 +12,7 @@ from stats import get_num_chars
 from stats import sort_chars
 
 def main():
-    book = "./books/frankenstein.txt"
+    book = sys.argv[1]
     book_text = get_book_text(book)
     num_words = get_num_words(book_text)
     num_chars = get_num_chars(book_text)
@@ -20,4 +25,5 @@ def main():
     for char in sorted_chars:
         print(f"{char["char"]}:", char["num"])
     print("============= END ===============")
+
 main()
